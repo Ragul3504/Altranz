@@ -60,7 +60,7 @@ app.get('/api/events', (req, res) => {
 
 // POST /api/register - Handles registration
 app.post('/api/register', async (req, res) => {
-    const { fullName, email, phone, college, department, year, selectedEvents, totalFee } = req.body;
+    const { fullName, email, phone, college, department, year, selectedEvents, totalFee, transactionId } = req.body;
 
     // 1. Validation (Basic)
     if (!fullName || !email || !phone || !selectedEvents || selectedEvents.length === 0) {
@@ -91,8 +91,9 @@ app.post('/api/register', async (req, res) => {
                     department: department,
                     year: year,
                     events: selectedEvents,
-                    total_fee: totalFee
-                    // payment_status defaults to 'pending'
+                    total_fee: totalFee,
+                    transaction_id: transactionId,
+                    payment_status: 'completed' // Assume completed since they entered TID
                 }
             ])
             .select();

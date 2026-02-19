@@ -11,5 +11,6 @@ CREATE TABLE registrations (
   year TEXT NOT NULL,
   events JSONB NOT NULL, -- Array of selected event objects
   total_fee NUMERIC NOT NULL,
+  transaction_id TEXT, -- UPI Transaction ID
   payment_status TEXT DEFAULT 'pending' -- pending, completed
 );

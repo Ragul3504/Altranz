@@ -32,20 +32,27 @@
                     <p style="color: #000; margin-top: 0.5rem; font-weight: bold;">SCAN TO PAY</p>
                 </div>
 
-                <p>After payment, your registration will be verified at the venue.</p>
-                <p>A confirmation email has been dispatched to your inbox.</p>
+                <form id="paymentForm" style="margin-top: 2rem; text-align: left;">
+                    <div class="form-group">
+                        <label for="transactionId" style="text-align: center;">ENTER UPI TRANSACTION ID</label>
+                        <input type="text" id="transactionId" name="transactionId" placeholder="e.g. 123456789012"
+                            required style="text-align: center;">
+                    </div>
+                    <div style="text-align: center;">
+                        <button type="submit" class="btn">VERIFY & COMPLETE REGISTRATION</button>
+                    </div>
+                </form>
 
-                <a href="index.html" class="btn" style="margin-top: 2rem;">RETURN TO HOME</a>
+                <p style="margin-top: 1rem; font-size: 0.9rem;">After verification, your registration will be confirmed
+                    via email.</p>
+
+                <a href="register.html" class="btn"
+                    style="margin-top: 2rem; font-size: 0.8rem; padding: 0.5rem 1rem;">Back</a>
             </div>
         </main>
     </div>
 
-    <script>
-        // Get amount from URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const amount = urlParams.get('amount') || '0';
-        document.getElementById('paymentAmount').innerText = amount;
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>

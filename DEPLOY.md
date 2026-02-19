@@ -4,6 +4,7 @@
 ## Prerequisites
 1.  **Vercel Account**: Sign up at [vercel.com](https://vercel.com).
 2.  **Vercel CLI**: Install globally with `npm i -g vercel`.
+3.  **Repository**: [https://github.com/Ragul3504/Altranz](https://github.com/Ragul3504/Altranz)
 
 ## Steps
 1.  Open a terminal in the project folder.

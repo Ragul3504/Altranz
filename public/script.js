@@ -85,9 +85,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Form Submission
+    // Form Submission (Registration Page)
     if (registrationForm) {
-        registrationForm.addEventListener('submit', async (e) => {
+        registrationForm.addEventListener('submit', (e) => {
             e.preventDefault();
 
             if (selectedEventIds.size === 0) {
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let totalFee = 0;
             selectedEvents.forEach(e => totalFee += e.fee);
 
-            const payload = {
+            const registrationData = {
                 fullName: formData.get('fullName'),
                 email: formData.get('email'),
                 phone: formData.get('phone'),
@@ -111,9 +111,46 @@ document.addEventListener('DOMContentLoaded', () => {
                 totalFee: totalFee
             };
 
-            const submitBtn = registrationForm.querySelector('button[type="submit"]');
+            // Save to Session Storage
+            sessionStorage.setItem('registrationData', JSON.stringify(registrationData));
+
+            // Redirect to Payment Page
+            window.location.href = `payment.html`;
+        });
+    }
+
+    // Payment Page Logic
+    const paymentForm = document.getElementById('paymentForm');
+    if (paymentForm) {
+        // Load data from session
+        const storedData = sessionStorage.getItem('registrationData');
+        if (!storedData) {
+            alert('No registration data found. Returning to home.');
+            window.location.href = 'index.html';
+            return;
+        }
+
+        const registrationData = JSON.parse(storedData);
+        document.getElementById('paymentAmount').innerText = registrationData.totalFee;
+
+        // Handle Payment Submission
+        paymentForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const transactionId = document.getElementById('transactionId').value;
+            if (!transactionId) {
+                alert('Please enter a valid Transaction ID.');
+                return;
+            }
+
+            const payload = {
+                ...registrationData,
+                transactionId: transactionId
+            };
+
+            const submitBtn = paymentForm.querySelector('button[type="submit"]');
             const originalBtnText = submitBtn.innerText;
-            submitBtn.innerText = "PROCESSING...";
+            submitBtn.innerText = "VERIFYING...";
             submitBtn.disabled = true;
 
             try {
@@ -128,8 +165,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 const result = await response.json();
 
                 if (response.ok) {
-                    // Redirect to payment page
-                    window.location.href = `payment.html?amount=${totalFee}`;
+                    // Clear session
+                    sessionStorage.removeItem('registrationData');
+                    window.location.href = 'success.html';
                 } else {
                     alert('Registration failed: ' + (result.error || 'Unknown error'));
                     submitBtn.innerText = originalBtnText;
