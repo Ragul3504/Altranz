@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - ALTRANZ 2026</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Share+Tech+Mono&display=swap"
+        rel="stylesheet">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div class="overlay"></div>
+    <div class="container">
+        <header>
+            <h1>OPERATIVE REGISTRATION</h1>
+            <a href="index.html" class="btn">Return to Base</a>
+        </header>
+
+        <main>
+            <div class="form-container">
+                <form id="registrationForm">
+                    <!-- Personal Info -->
+                    <div class="form-group">
+                        <label for="fullName">FULL NAME</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">EMAIL ADDRESS</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">PHONE NUMBER</label>
+                        <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" title="10 digit mobile number"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="college">COLLEGE / INSTITUTION</label>
+                        <input type="text" id="college" name="college" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="department">DEPARTMENT</label>
+                        <input type="text" id="department" name="department" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="year">YEAR OF STUDY</label>
+                        <select id="year" name="year" required>
+                            <option value="">Select Year</option>
+                            <option value="1">1st Year</option>
+                            <option value="2">2nd Year</option>
+                            <option value="3">3rd Year</option>
+                            <option value="4">4th Year</option>
+                        </select>
+                    </div>
+
+                    <!-- Event Selection -->
+                    <div class="form-group">
+                        <label>SELECT OPERATIONS (EVENTS)</label>
+
+                        <div class="filters">
+                            <button type="button" class="filter-btn active" data-filter="All">ALL</button>
+                            <button type="button" class="filter-btn" data-filter="Technical">TECHNICAL</button>
+                            <button type="button" class="filter-btn" data-filter="Non-Technical">NON-TECHNICAL</button>
+                            <button type="button" class="filter-btn" data-filter="Workshop">WORKSHOPS</button>
+                        </div>
+
+                        <div id="eventsGrid" class="events-grid">
+                            <!-- Events injected by JS -->
+                            <p>Loading operations...</p>
+                        </div>
+                    </div>
+
+                    <div class="total-section">
+                        TOTAL FEE: ₹<span id="totalFee">0</span>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <button type="submit" class="btn">CONFIRM & PROCEED TO PAYMENT</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

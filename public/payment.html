@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - ALTRANZ 2026</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Share+Tech+Mono&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="overlay"></div>
+    <div class="container">
+        <header>
+            <h1>PAYMENT AUTHORIZATION</h1>
+        </header>
+
+        <main>
+            <div class="form-container" style="text-align: center;">
+                <h2>REGISTRATION PENDING</h2>
+                <p>Please complete the transaction to finalize your deployment.</p>
+
+                <div class="total-section" style="border: none; justify-content: center; margin: 1rem 0;">
+                    AMOUNT DUE: ₹<span id="paymentAmount">0</span>
+                </div>
+
+                <div class="qr-container">
+                    <!-- Placeholder QR or user provided image -->
+                    <img src="qr-placeholder.png" alt="Google Pay QR Code" id="qrCodeImage">
+                    <p style="color: #000; margin-top: 0.5rem; font-weight: bold;">SCAN TO PAY</p>
+                </div>
+
+                <p>After payment, your registration will be verified at the venue.</p>
+                <p>A confirmation email has been dispatched to your inbox.</p>
+
+                <a href="index.html" class="btn" style="margin-top: 2rem;">RETURN TO HOME</a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Get amount from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const amount = urlParams.get('amount') || '0';
+        document.getElementById('paymentAmount').innerText = amount;
+    </script>
+</body>
+
+</html>
