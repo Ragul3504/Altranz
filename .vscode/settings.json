@@ -9,6 +9,16 @@
             "database": "postgres",
             "username": "postgres",
             "name": "register"
+        },
+        {
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "db.pxuwdnurzngfyihdurem.supabase.co",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "DB",
+            "database": "postgres",
+            "username": "postgres"
         }
     ]
 }
